@@ -4,7 +4,7 @@ namespace App\Http\Requests\V1;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreTaskRequest extends FormRequest
+class RegisterRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,17 +22,9 @@ class StoreTaskRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title'=>'required',
-            'description'=>'required',
-             'userId'=>'required',
-             'status'=>'required'
-
+           'name'=>'required|string',
+           'email'=>'required|string|unique:users,email',
+           'password'=>'required|string'
         ];
-    }
-    protected function prepareForValidation()
-    {
-        $this->merge([
-            'user_id' => $this->userId, // Gardez la même clé pour la cohérence
-        ]);
     }
 }

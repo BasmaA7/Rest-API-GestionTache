@@ -1,17 +1,17 @@
 <?php
 
-namespace App\Http\Requests\V1;
+namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreTaskRequest extends FormRequest
+class RegisterRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
     {
-        return true;
+        return false;
     }
 
     /**
@@ -22,17 +22,7 @@ class StoreTaskRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title'=>'required',
-            'description'=>'required',
-             'userId'=>'required',
-             'status'=>'required'
-
+            //
         ];
-    }
-    protected function prepareForValidation()
-    {
-        $this->merge([
-            'user_id' => $this->userId, // Gardez la même clé pour la cohérence
-        ]);
     }
 }
