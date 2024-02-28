@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\V1\LoginController;
 use App\Http\Controllers\Api\V1\RegisterController;
 use App\Http\Controllers\Api\V1\TaskController;
 use App\Http\Controllers\Api\V1\UserController;
@@ -22,10 +23,11 @@ use Illuminate\Support\Facades\Route;
 //     return $request->user();
 // });
 Route::post('register',[RegisterController::class,'store']);
-
+Route::post('login',[LoginController::class,'login']);
 Route::group(['prefix'=>'v1','namespace'=>'App\Http\Controllers\Api\V1','middleware'=>'auth:sanctum'],function(){
-Route::apiResource('tasks',TaskController::class);
+Route::apiResource('tasks',TaskController::class)->middleware('auth:sanctum');
 Route::apiResource('users',UserController::class);
+Route::post('logout', [RegisterController::class, 'logout']);
 
 });
 // Route::group(['prefix'=>'v1','namespace'=>'App\Http\Controllers\Api\V1'],function(){

@@ -23,4 +23,15 @@ class RegisterController extends Controller
         // return new UserResource($user);
 return response($reponse);
     }
+
+
+  
+    public function logout(Request $request)
+{
+    auth()->user()->tokens()->delete();
+    
+    return [
+        'message' => 'Logout With seccess'
+    ];
+}
 }

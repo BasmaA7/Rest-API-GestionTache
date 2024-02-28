@@ -39,6 +39,7 @@ class TaskController extends Controller
      * Remove the specified resource from storage.
      */
     public function store(StoreTaskRequest $request){
+        
         return new TaskResource(Task::create($request->all()) );
 
     }
