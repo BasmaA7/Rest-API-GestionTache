@@ -19,19 +19,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-//     return $request->user();
-// });
+
 Route::post('register',[RegisterController::class,'store']);
-Route::post('login',[LoginController::class,'login']);
+Route::post('login', [LoginController::class, 'login']);
 Route::group(['prefix'=>'v1','namespace'=>'App\Http\Controllers\Api\V1','middleware'=>'auth:sanctum'],function(){
 Route::apiResource('tasks',TaskController::class)->middleware('auth:sanctum');
 Route::apiResource('users',UserController::class);
 Route::post('logout', [RegisterController::class, 'logout']);
 
 });
-// Route::group(['prefix'=>'v1','namespace'=>'App\Http\Controllers\Api\V1'],function(){
-//     Route::apiResource('register',RegisterController::class);
-// });
 
 
