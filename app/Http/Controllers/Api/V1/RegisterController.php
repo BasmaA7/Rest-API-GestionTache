@@ -51,7 +51,7 @@ class RegisterController extends Controller
            'token'=>$token 
         ];
         // return new UserResource($user);
-return response($reponse);
+return response($reponse,201);
     }
 
 

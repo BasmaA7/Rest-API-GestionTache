@@ -16,7 +16,7 @@ class TaskController extends Controller
      */
        /**
      * @OA\Get(
-     *     path="/api/Get_ALL_tasks",
+     *     path="/api/v1/tasks",
      *     summary="Get all tasks",
      *     @OA\Response(response="200", description="List of tasks"),
      * )
@@ -139,7 +139,7 @@ class TaskController extends Controller
     }
       /**
      * @OA\Delete(
-     *     path="/api/Delete_tasks/{id}",
+     *     path="/api/v1/tasks/{id}",
      *     summary="Delete a specific task",
      *     @OA\Parameter(
      *         name="id",
